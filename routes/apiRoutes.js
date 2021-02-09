@@ -12,9 +12,15 @@ router.post("/api/workouts", ({ body }, res) => {
 });
 
 router.get("/api/workouts", (req, res) => {
-  db.Workout.find({})
-    .sort({ day: -1 })
+  console.log("hello")
+  db.Workout.aggregate().addFields({ //swap aggretate for find to see if you get the workouts
+    totalDuration: {
+      $sum: "$exercises.duration"
+    }
+  })
+    // .sort({ day: -1 })
     .then((dbWorkout) => {
+      console.log(dbWorkout)
       res.json(dbWorkout);
     })
     .catch((err) => {
