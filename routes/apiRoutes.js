@@ -13,7 +13,7 @@ router.post("/api/workouts", ({ body }, res) => {
 
 router.get("/api/workouts", (req, res) => {
   console.log("hello")
-  db.Workout.aggregate().addFields({ //swap aggretate for find to see if you get the workouts
+  db.Workout.aggregate().addFields({ 
     totalDuration: {
       $sum: "$exercises.duration"
     }
