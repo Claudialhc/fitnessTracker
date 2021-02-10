@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitness_tracker", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitness_tracker", { //changed workout to fitness_tracker
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
